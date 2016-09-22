@@ -5,7 +5,7 @@ using Nancy;
 using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
 
-namespace HairSalon
+namespace Appointment
 {
   public class Startup
   {
@@ -40,6 +40,6 @@ namespace HairSalon
   }
   public static class DBConfiguration
   {
-      public static string ConnectionString = //"Data Source=(localdb)\\mssqllocaldb;Initial Catalog=hair_salon;Integrated Security=SSPI;";
+      public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=doctor_appointment;Integrated Security=SSPI;";
   }
 }
