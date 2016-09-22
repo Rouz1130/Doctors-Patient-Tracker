@@ -30,19 +30,6 @@ namespace Appointment
       Assert.Equal(firstDoctor, secondDoctor);
     }
 
-    // [Fact]
-    // public void Test3_Save_AssignIdToObject()
-    // {
-    //   Doctor testDoctor = new Doctor("Andrew");
-    //   testDoctor.Save();
-    //   Doctor savedDoctor = Doctor.GetAll()[0];
-    //
-    //   int result = savedDoctor.GetId();
-    //   int testId = testDoctor.GetId();
-    //
-    //   Assert.Equal(testId, result);
-    // }
-
     [Fact]
     public void Test3_SavestoDatabase()
     {
@@ -54,6 +41,18 @@ namespace Appointment
       Assert.Equal(testList, result);
     }
 
+    [Fact]
+    public void Test4_Save_AssignIdToObject()
+    {
+      Doctor testDoctor = new Doctor("Andrew");
+      testDoctor.Save();
+      Doctor savedDoctor = Doctor.GetAll()[0];
+
+      int result = savedDoctor.GetId();
+      int testId = testDoctor.GetId();
+
+      Assert.Equal(testId, result);
+    }
       public void Dispose()
       {
         Doctor.DeleteAll();
