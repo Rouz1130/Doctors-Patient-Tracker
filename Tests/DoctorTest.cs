@@ -30,6 +30,30 @@ namespace Appointment
       Assert.Equal(firstDoctor, secondDoctor);
     }
 
+    // [Fact]
+    // public void Test3_Save_AssignIdToObject()
+    // {
+    //   Doctor testDoctor = new Doctor("Andrew");
+    //   testDoctor.Save();
+    //   Doctor savedDoctor = Doctor.GetAll()[0];
+    //
+    //   int result = savedDoctor.GetId();
+    //   int testId = testDoctor.GetId();
+    //
+    //   Assert.Equal(testId, result);
+    // }
+
+    [Fact]
+    public void Test3_SavestoDatabase()
+    {
+      Doctor testDoctor = new Doctor("Bob");
+      testDoctor.Save();
+      List<Doctor> result = Doctor.GetAll();
+      List<Doctor> testList = new List<Doctor>{testDoctor};
+
+      Assert.Equal(testList, result);
+    }
+
       public void Dispose()
       {
         Doctor.DeleteAll();
