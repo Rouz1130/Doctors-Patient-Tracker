@@ -100,6 +100,37 @@ namespace Appointment
       }
     }
 
+    public static Doctor Find(int id)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM doctors WHERE id = @DoctorId;", conn);
+      SqlParameter doctorIdParameter = new SqlParameter();
+      doctorIdParameter.ParameterName = "@DoctorId";
+      doctorIdParameter.Value = id.ToString();
+      cmd.Parameters.Add(doctorIdParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      int foundDoctorId = 0;
+      string foundDoctorName = null;
+      while(rdr.Read())
+      {
+        foundDoctorId = rdr.GetInt32(0);
+        foundDoctorName = rdr.GetString(1);
+      }
+      Doctor foundDoctorList = new Doctor(foundDoctorName, foundDoctorId);
+      if (rdr !=null)
+      {
+        rdr.Close();
+      }
+      if (conn !=null)
+      {
+        conn.Close();
+      }
+      return foundDoctorList;
+    }
+
     public static void DeleteAll()
     {
       SqlConnection conn = DB.Connection();

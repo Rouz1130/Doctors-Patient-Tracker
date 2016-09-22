@@ -53,6 +53,17 @@ namespace Appointment
 
       Assert.Equal(testId, result);
     }
+
+    [Fact]
+    public void Test5_Find_NewDoctor()
+    {
+      Doctor testDoctor = new Doctor("Maggy");
+      testDoctor.Save();
+
+      Doctor foundDoctor = Doctor.Find(testDoctor.GetId());
+
+      Assert.Equal(testDoctor, foundDoctor);
+    }
       public void Dispose()
       {
         Doctor.DeleteAll();
