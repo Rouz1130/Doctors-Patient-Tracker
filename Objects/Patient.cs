@@ -77,6 +77,37 @@ namespace Appointment
 
       return allPatients;
     }
+
+    public void Save()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO patients(name) OUTPUT INSERTED.id VALUES (@patientsName);", conn);
+
+      SqlParameter nameParameter = new SqlParameter();
+      nameParameter.ParameterName = "@patientsName";
+      nameParameter.Value = this.GetName();
+      cmd.Parameters.Add(nameParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        this._id = rdr.GetInt32(0);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn !=null)
+      {
+        conn.Close();
+      }
+    }
+
+
+
+
     //DeleteAll method has to have IDisposable in test to run test
     public static void DeleteAll()
     {

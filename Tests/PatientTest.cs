@@ -30,6 +30,19 @@ namespace Appointment
      Assert.Equal(firstPatient, secondPatient);
    }
 
+   [Fact]
+   public void Test3_Save_AssignedIdTo_Object()
+   {
+     Patient testPatient = new Patient("Alex");
+     testPatient.Save();
+     Patient savedPatient = Patient.GetAll()[0];
+
+     int result = savedPatient.GetId();
+     int testId = testPatient.GetId();
+
+     Assert.Equal(testId, result);
+   }
+
 
    public void Dispose()
    {
