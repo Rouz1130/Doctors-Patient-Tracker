@@ -83,10 +83,10 @@ namespace Appointment
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO patients(name) OUTPUT INSERTED.id VALUES (@patientsName);", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO patients(name) OUTPUT INSERTED.id VALUES (@PatientsName);", conn);
 
       SqlParameter nameParameter = new SqlParameter();
-      nameParameter.ParameterName = "@patientsName";
+      nameParameter.ParameterName = "@PatientsName";
       nameParameter.Value = this.GetName();
       cmd.Parameters.Add(nameParameter);
       SqlDataReader rdr = cmd.ExecuteReader();
@@ -105,8 +105,71 @@ namespace Appointment
       }
     }
 
+    public static Patient Find(int id)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
 
+      SqlCommand cmd = new SqlCommand("SELECT * FROM patients WHERE id= @PatientId;",conn);
+      SqlParameter patientIdParameter = new SqlParameter();
+      patientIdParameter.ParameterName = "@PatientId";
+      patientIdParameter.Value = id.ToString();
+      cmd.Parameters.Add(patientIdParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
 
+      int foundPatientId = 0;
+      string foundPatientName = null;
+      while(rdr.Read())
+      {
+        foundPatientId = rdr.GetInt32(0);
+        foundPatientName = rdr.GetString(1);
+      }
+      Patient foundPatient = new Patient(foundPatientName, foundPatientId);
+
+      if (rdr !=null)
+      {
+        rdr.Close();
+      }
+      if (conn !=null)
+      {
+        conn.Close();
+      }
+      return foundPatient;
+    }
+
+    public void Update(string newName)
+   {
+     SqlConnection conn = DB.Connection();
+     conn.Open();
+
+     SqlCommand cmd = new SqlCommand("UPDATE patients SET name = @NewName OUTPUT INSERTED.name WHERE id = @PatientId;", conn);
+
+     SqlParameter newNameParameter = new SqlParameter();
+     newNameParameter.ParameterName = "@NewName";
+     newNameParameter.Value = newName;
+     cmd.Parameters.Add(newNameParameter);
+
+     SqlParameter patientIdParameter = new SqlParameter();
+     patientIdParameter.ParameterName = "@PatientId";
+     patientIdParameter.Value = this.GetId();
+     cmd.Parameters.Add(patientIdParameter);
+     SqlDataReader rdr = cmd.ExecuteReader();
+
+     while(rdr.Read())
+     {
+       this._name = rdr.GetString(0);
+     }
+
+     if (rdr != null)
+     {
+       rdr.Close();
+     }
+
+     if (conn != null)
+     {
+       conn.Close();
+     }
+   }
 
     //DeleteAll method has to have IDisposable in test to run test
     public static void DeleteAll()

@@ -43,6 +43,45 @@ namespace Appointment
      Assert.Equal(testId, result);
    }
 
+   [Fact]
+   public void Test4_SavesToDatabase()
+   {
+     Patient testPatient = new Patient("Paul");
+     testPatient.Save();
+
+     List<Patient> result = Patient.GetAll();
+     List<Patient> testList = new List<Patient>{testPatient};
+
+     Assert.Equal(testList, result);
+
+   }
+
+   [Fact]
+   public void Test5_Find_PatientInDatabase()
+   {
+     Patient testPatient = new Patient ("Buddy");
+     testPatient.Save();
+
+     Patient foundPatient = Patient.Find(testPatient.GetId());
+
+     Assert.Equal(testPatient, foundPatient);
+   }
+
+   [Fact]
+     public void Test6_Update_UpdatesPatientInDatabase()
+     {
+       string name = "Denzel";
+       Patient testPatient = new Patient(name);
+       testPatient.Save();
+
+       string newName = "Kyle";
+       testPatient.Update(newName);
+       string result = testPatient.GetName();
+
+       Assert.Equal(newName, result);
+     }
+
+
 
    public void Dispose()
    {
