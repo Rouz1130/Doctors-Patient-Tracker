@@ -64,6 +64,21 @@ namespace Appointment
 
       Assert.Equal(testDoctor, foundDoctor);
     }
+
+      [Fact]
+      public void Test6_Update_DoctorToDatabase()
+      {
+        string name = "Maggy";
+        Doctor testDoctor = new Doctor(name);
+        testDoctor.Save();
+        string newName = "Steve";
+
+        testDoctor.Update(newName);
+        string result = testDoctor.GetName();
+
+        Assert.Equal(newName, result);
+      }
+      
       public void Dispose()
       {
         Doctor.DeleteAll();

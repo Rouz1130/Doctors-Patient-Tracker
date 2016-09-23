@@ -129,7 +129,33 @@ namespace Appointment
         conn.Close();
       }
       return foundDoctorList;
-    }
+      }
+
+      public void Update(string newName)
+      {
+        SqlConnection conn = DB.Connection();
+        conn.Open();
+
+        SqlCommand cmd = new SqlCommand("UPDATE doctors SET name = @NewName OUTPUT INSERTED.name WHERE id = @DoctorId;", conn);
+
+        SqlParameter newNameParameter = new SqlParameter();
+        newNameParameter.ParameterName = "@NewName";
+        newNameParameter.Value = newName;
+        cmd.Parameters.Add(newNameParameter);
+
+        SqlParameter doctorIdParameter = new SqlParameter();
+        doctorIdParameter.ParameterName = "@DoctorId";
+        doctorIdParameter.Value = this.GetId();
+        cmd.Parameters.Add(doctorIdParameter);
+
+        SqlDataReader rdr = cmd.ExecuteReader();
+
+        while(rdr.Read())
+        {
+          this._name = rdr.GetString(0);
+        }
+        if(rdr !=null);
+      }
 
     public static void DeleteAll()
     {
