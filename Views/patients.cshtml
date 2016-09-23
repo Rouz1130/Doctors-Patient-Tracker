@@ -1,0 +1,19 @@
+</ul>
+<form action="/patients/delete" method="post">
+  <button type="submit">Clear all</button>
+</form>
+}
+<a href="/patients/new">Add Patient</a>
+<<a href="/">Home</a>
+@if (@doctor.Count == 0)
+{
+  <h3>No Patients</h3>
+}
+else
+{
+  <h1>Add new Patient/h1>
+  <ul>
+    @foreach (var patient in Model)
+    {
+      <li>@patient.GetName()</li>
+    }

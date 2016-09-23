@@ -154,7 +154,14 @@ namespace Appointment
         {
           this._name = rdr.GetString(0);
         }
-        if(rdr !=null);
+        if(rdr !=null)
+        {
+          rdr.Close();
+        }
+        if(conn !=null)
+        {
+          conn.Close();
+        }
       }
 
     public static void DeleteAll()
