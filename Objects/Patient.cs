@@ -6,9 +6,11 @@ namespace Appointment
 {
   public class Patient
   {
+    //properties
     private int _id;
     private string _name;
 
+    //constructor
     public Patient(string Name, int Id = 0)
     {
       _id = Id;
@@ -16,6 +18,7 @@ namespace Appointment
 
     }
 
+    //getters and setters
     public int GetId()
     {
       return _id;
@@ -28,6 +31,23 @@ namespace Appointment
     {
       _name = newName;
     }
+
+    //methods: Equals method
+    public override bool Equals(System.Object otherPatient)
+    {
+      if (!(otherPatient is Patient))
+      {
+        return false;
+      }
+      else
+      {
+        Patient newPatient = (Patient) otherPatient;
+        bool idEquality = (this.GetId() == newPatient.GetId());
+        bool nameEquality = (this.GetName() == newPatient.GetName());
+        return (idEquality && nameEquality);
+      }
+    }
+    //methods
     public static List<Patient> GetAll()
     {
       List<Patient> allPatients = new List<Patient>{};
@@ -57,7 +77,7 @@ namespace Appointment
 
       return allPatients;
     }
-
+    //DeleteAll method has to have IDisposable in test to run test
     public static void DeleteAll()
     {
       SqlConnection conn = DB.Connection();

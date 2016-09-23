@@ -21,6 +21,15 @@ namespace Appointment
      Assert.Equal(0, result);
    }
 
+   [Fact]
+   public void Test2_Equals_ReturnsTrueIfNameAreSame()
+   {
+     Patient firstPatient = new Patient("Doug");
+     Patient secondPatient = new Patient("Doug");
+
+     Assert.Equal(firstPatient, secondPatient);
+   }
+
 
    public void Dispose()
    {
