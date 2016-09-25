@@ -1,0 +1,17 @@
+<h1>Add Patient</h1>
+<hr>
+
+<form action="/patients/new" method="post">
+  <label for="patient-name">Patient Name:</label>
+  <input id="patient-name" name="patient-name" type="text">
+  <select name="doctor-id">
+    @foreach (var doctor in Model)
+    {
+      <option value="@doctor.GetId()">@doctor.GetName()</option>
+    }
+  </select>
+  <button type="submit">Add Patient</button>
+</form>
+<br>
+<a href="/">Home</a>
+<a href="/patients">View all patients</a>
