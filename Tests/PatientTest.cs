@@ -13,6 +13,11 @@ namespace Appointment
     DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=doctor_appointment_test;Integrated Security=SSPI;";
    }
 
+   public void Dispose()
+   {
+     Patient.DeleteAll();
+   }
+
    [Fact]
    public void Test1_DatabaseEmptyAtFirst()
    {
@@ -24,8 +29,8 @@ namespace Appointment
    [Fact]
    public void Test2_Equals_ReturnsTrueIfNameAreSame()
    {
-     Patient firstPatient = new Patient("Doug");
-     Patient secondPatient = new Patient("Doug");
+     Patient firstPatient = new Patient("Doug", 1);
+     Patient secondPatient = new Patient("Doug", 1);
 
      Assert.Equal(firstPatient, secondPatient);
    }
@@ -33,7 +38,7 @@ namespace Appointment
    [Fact]
    public void Test3_Save_AssignedIdTo_Object()
    {
-     Patient testPatient = new Patient("Alex");
+     Patient testPatient = new Patient("Alex",1);
      testPatient.Save();
      Patient savedPatient = Patient.GetAll()[0];
 
@@ -43,23 +48,11 @@ namespace Appointment
      Assert.Equal(testId, result);
    }
 
-   [Fact]
-   public void Test4_SavesToDatabase()
-   {
-     Patient testPatient = new Patient("Paul");
-     testPatient.Save();
-
-     List<Patient> result = Patient.GetAll();
-     List<Patient> testList = new List<Patient>{testPatient};
-
-     Assert.Equal(testList, result);
-
-   }
 
    [Fact]
-   public void Test5_Find_PatientInDatabase()
+   public void Test4_Find_PatientInDatabase()
    {
-     Patient testPatient = new Patient ("Buddy");
+     Patient testPatient = new Patient ("Buddy",1);
      testPatient.Save();
 
      Patient foundPatient = Patient.Find(testPatient.GetId());
@@ -67,26 +60,6 @@ namespace Appointment
      Assert.Equal(testPatient, foundPatient);
    }
 
-   [Fact]
-     public void Test6_Update_UpdatesPatientInDatabase()
-     {
-       string name = "Denzel";
-       Patient testPatient = new Patient(name);
-       testPatient.Save();
-
-       string newName = "Kyle";
-       testPatient.Update(newName);
-       string result = testPatient.GetName();
-
-       Assert.Equal(newName, result);
-     }
-
-
-
-   public void Dispose()
-   {
-     Patient.DeleteAll();
-   }
 
     }
   }

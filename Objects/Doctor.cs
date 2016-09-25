@@ -73,6 +73,37 @@ namespace Appointment
       return allDoctors;
     }
 
+    public List<Patient> GetPatients()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM patients WHERE doctor_id = @DoctorId;", conn);
+      SqlParameter doctorIdParameter = new SqlParameter();
+      doctorIdParameter.ParameterName = "@DoctorId";
+      doctorIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(doctorIdParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      List<Patient> patients = new List<Patient>{};
+      while(rdr.Read())
+      {
+        int patientId = rdr.GetInt32(0);
+        string patientName = rdr.GetString(1);
+        int patientDoctorId = rdr.GetInt32(2);
+        Patient newPatient = new Patient(patientName, patientDoctorId, patientId);
+      }
+      if (rdr !=null)
+      {
+        rdr.Close();
+      }
+      if (conn !=null)
+      {
+        conn.Close();
+      }
+      return patients;
+    }
+
     public void Save()
     {
       SqlConnection conn = DB.Connection();
@@ -159,6 +190,27 @@ namespace Appointment
           rdr.Close();
         }
         if(conn !=null)
+        {
+          conn.Close();
+        }
+      }
+
+
+      public void Delete()
+      {
+        SqlConnection conn = DB.Connection();
+        conn.Open();
+
+        SqlCommand cmd = new SqlCommand("DELETE FROM doctors WHERE doctor_id = @DoctorId;",conn);
+
+        SqlParameter doctorIdParameter = new SqlParameter();
+        doctorIdParameter.ParameterName = "@DoctorId";
+        doctorIdParameter.Value = this.GetId();
+
+        cmd.Parameters.Add(doctorIdParameter);
+        cmd.ExecuteNonQuery();
+
+        if (conn != null)
         {
           conn.Close();
         }

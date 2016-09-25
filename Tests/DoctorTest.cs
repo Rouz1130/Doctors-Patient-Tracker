@@ -13,6 +13,11 @@ namespace Appointment
        DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=doctor_appointment_test;Integrated Security=SSPI;";
     }
 
+    public void Dispose()
+    {
+      Doctor.DeleteAll();
+    }
+
     [Fact]
     public void Test1_Database_EmptyAtFirst()
     {
@@ -78,11 +83,7 @@ namespace Appointment
 
         Assert.Equal(newName, result);
       }
-      
-      public void Dispose()
-      {
-        Doctor.DeleteAll();
-      }
+
 
     }
   }
