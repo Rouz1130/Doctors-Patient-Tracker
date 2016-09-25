@@ -3,7 +3,7 @@
 <h2>Edit Doctor: @Model.GetName()</h2>
 <form action="/doctor/edit/@Model.GetId()" method="post">
   <input type="hidden" name="_method" value="PATCH">
-  <input name="docotr-id" type="hidden" value="@Model.GetId()">
+  <input name="doctor-id" type="hidden" value="@Model.GetId()">
   <label for="doctor-name">Doctor Name</label>
   <input id="doctor-name" name="doctor-name" type="text">
   <button type="submit">Submit</button>

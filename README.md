@@ -6,7 +6,7 @@
 
 ## Description/Specs
 
-This website well have two tables one for Doctors and for for Patients. For each doctor the table will add a patient to them. The user will be able to click on doctor or patients at the home-page/index-page. Depending on what the user clicks they will be directed to another page.
+This website well have two tables one for Doctors and for Patients. For each doctor the table will add a patient to them. The user will be able to click on doctor or patients at the home-page/index-page. Depending on what the user clicks they will be directed to another page.
 ## Setup/Installation
 
 -Clone from https://github.com/Rouz1130/
@@ -19,6 +19,7 @@ This website well have two tables one for Doctors and for for Patients. For each
 * CREATE TABLE doctor (id INT IDENTITY(1,1), name VARCHAR(255));
 * CREATE TABLE patient (id INT IDENTITY(1,1), name VARCHAR(255));
 * GO
+*
 
 
 ## Known Bugs

@@ -201,7 +201,7 @@ namespace Appointment
         SqlConnection conn = DB.Connection();
         conn.Open();
 
-        SqlCommand cmd = new SqlCommand("DELETE FROM doctors WHERE doctor_id = @DoctorId;",conn);
+        SqlCommand cmd = new SqlCommand("DELETE FROM doctors WHERE id= @DoctorId; DELETE FROM patients WHERE doctor_id = @DoctorId;",conn);
 
         SqlParameter doctorIdParameter = new SqlParameter();
         doctorIdParameter.ParameterName = "@DoctorId";
