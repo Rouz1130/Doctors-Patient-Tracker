@@ -1,0 +1,7 @@
+<h1>Doctor Patient Database</h1>
+<h4>@Model.GetName()</h4>
+<form action="/doctor/delete/@Model.GetId()" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">Delete</button>
+</form>
+<a href="/">Home</a>

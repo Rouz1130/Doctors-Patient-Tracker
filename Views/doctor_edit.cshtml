@@ -1,0 +1,11 @@
+<h1>Doctor Patient List</h1>
+<hr>
+<h2>Edit Doctor: @Model.GetName()</h2>
+<form action="/doctor/edit/@Model.GetId()" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input name="docotr-id" type="hidden" value="@Model.GetId()">
+  <label for="doctor-name">Doctor Name</label>
+  <input id="doctor-name" name="doctor-name" type="text">
+  <button type="submit">Submit</button>
+</form>
+<h4><a href="/">Home</a></h4>

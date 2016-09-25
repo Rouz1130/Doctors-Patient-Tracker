@@ -1,0 +1,18 @@
+<h1>All Patients for this Category</h1>
+
+@if (@Model["patients"].Count == 0)
+{
+  <p>No Patients have been Added!</p>
+}
+else
+{
+  <ol>
+    @foreach (var patient in @Model["patients"])
+    {
+      <li>@patient.GetName()</li>
+    }
+  </ol>
+}
+
+<p><a href="/patients/new">Add Patient</a></p>
+<p><a href="/">Back Home</a></p>  

@@ -1,0 +1,18 @@
+<h1>Doctor Patient Database</h1>
+<br>
+<h2>Doctors</h2>
+<ul>
+  @if (Model.Count !=0)
+  {
+    @foreach(var doctor in Model)
+    {
+      <li><a href="/doctors/@doctor.GetId()">@doctor.GetName()</a> | <a href="/doctor/edit/@doctor.GetId()">Edit</a> | <a href="doctor/delete/@doctor.GetId()">Delete</a></li>
+    }
+  }
+</ul>
+<h4><a href="/doctors/new">Add Doctor</a></h4>
+<h4><a href="/">Home</a></h4>
+
+<form action="/doctors/clear" method="post">
+  <button type="submit">Delete</button>
+</form>
