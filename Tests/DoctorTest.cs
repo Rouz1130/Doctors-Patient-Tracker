@@ -85,5 +85,23 @@ namespace Appointment
       }
 
 
+      public void Tets7_GetPatient()
+      {
+        //Arrange
+        Doctor testDoctor = new Doctor("Joe", 1);
+        testDoctor.Save();
+        Console.WriteLine(testDoctor.GetId());
+        Patient testPatient = new Patient("Mary", 127 );
+        testPatient.Save();
+        Patient patient2 = new Patient("Bob", 127 );
+        patient2.Save();
+
+        List<Patient> testList = new List<Patient>{testPatient, patient2};
+
+        //Acts
+        List<Patient> list = testDoctor.GetPatients();
+        //Assert
+        Assert.Equal(testList, list);
+      }
     }
   }

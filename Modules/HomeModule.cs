@@ -80,6 +80,11 @@ namespace Appointment
         SelectedDoctor.Delete();
         return View["success.cshtml"];
       };
-    }
+
+    //   Get["/doctors/delete"] = _ => {
+    //     Doctor.DeleteAll();
+    //     return View["cleared.cshtml"]
+    //   };
+    // }
    }
   }

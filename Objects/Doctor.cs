@@ -31,19 +31,6 @@ namespace Appointment
       _name = newName;
     }
 
-    public override bool Equals(System.Object otherDoctor)
-    {
-      if (!(otherDoctor is Doctor))
-      {
-        return false;
-      }
-      else
-      {
-        Doctor newDoctor = (Doctor) otherDoctor;
-        bool nameEquality = (this.GetName() == newDoctor.GetName());
-        return (nameEquality);
-      }
-    }
 
     public static List<Doctor> GetAll()
     {
@@ -81,6 +68,7 @@ namespace Appointment
       SqlCommand cmd = new SqlCommand("SELECT * FROM patients WHERE doctor_id = @DoctorId;", conn);
       SqlParameter doctorIdParameter = new SqlParameter();
       doctorIdParameter.ParameterName = "@DoctorId";
+      Console.WriteLine( this.GetId() );
       doctorIdParameter.Value = this.GetId();
       cmd.Parameters.Add(doctorIdParameter);
       SqlDataReader rdr = cmd.ExecuteReader();
@@ -92,6 +80,7 @@ namespace Appointment
         string patientName = rdr.GetString(1);
         int patientDoctorId = rdr.GetInt32(2);
         Patient newPatient = new Patient(patientName, patientDoctorId, patientId);
+        patients.Add(newPatient);
       }
       if (rdr !=null)
       {
@@ -224,6 +213,31 @@ namespace Appointment
       cmd.ExecuteNonQuery();
       conn.Close();
     }
+    public override bool Equals(System.Object otherDoctor)
+    {
+      if (!(otherDoctor is Doctor))
+      {
+        return false;
+      }
+      else
+      {
+        Doctor newDoctor = (Doctor) otherDoctor;
+        bool nameEquality = (this.GetName() == newDoctor.GetName());
+        // Console.WriteLine( this.GetName() );
+        // Console.WriteLine( newDoctor.GetName() );
+        bool idEquality = (this.GetId() == newDoctor.GetId());
+        // Console.WriteLine( this.GetId() );
+        // Console.WriteLine( newDoctor.GetId() );
+
+        return (nameEquality);
+      }
+    }
+
+
+      public override int GetHashCode()
+      {
+        return this.GetName().GetHashCode();
+      }
 
 
     }
