@@ -161,7 +161,12 @@ namespace Appointment
       return foundPatient;
     }
 
-    
+    public override int GetHashCode()
+    {
+      return this.GetName().GetHashCode();
+    }
+
+
     //DeleteAll method has to have IDisposable in test to run test
     public static void DeleteAll()
     {
