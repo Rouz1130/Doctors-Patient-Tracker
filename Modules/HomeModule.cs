@@ -81,7 +81,10 @@ namespace Appointment
         return View["success.cshtml"];
       };
 
-
+      Post["doctors/clear"] = _=> {
+      Doctor.DeleteAll();
+      return View["cleared.cshtml"];
+    };
     }
    }
   }
