@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="../Content/styles.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <h1>Doctor Patient Database</h1>
-<hr>
-<h2>Doctors</h2>
+<h2>Doctors:</h2>
+<br>
 <ul>
   @if (Model.Count !=0)
   {
@@ -12,8 +13,12 @@
   }
 </ul>
 <h4><a href="/doctors/new">Add Doctor</a></h4>
+<br>
+<br>
 <h4><a href="/">Home</a></h4>
+<br>
+<br>
 
 <form action="/doctors/clear" method="post">
-  <button type="submit">Clear</button>
+  <button class="but" type="submit">CLEAR</button>
 </form>

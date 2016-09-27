@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="../Content/styles.css" >
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <h1>Add Patient</h1>
 <hr>
 <form action="/patients/new" method="post">
@@ -10,8 +13,9 @@
       <option value="@doctor.GetId()">@doctor.GetName()</option>
     }
   </select>
-  <button type="submit">Add</button>
+  <button class="butt" type="submit">Add</button>
 </form>
+<br>
 <a href="/">Home</a>
 <br>
 <br>
