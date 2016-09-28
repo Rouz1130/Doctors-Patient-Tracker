@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" href="../Content/styles.css" >
+<link rel="stylesheet" href="/Content/styles.css" >
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -20,8 +20,11 @@
 <h1>Doctor Patient Database</h1>
 <hr>
 <h4>@Model.GetName()</h4>
+<br>
+<br>
+<br>
+<br>
 <form action="/doctor/delete/@Model.GetId()" method="post">
   <input type="hidden" name="_method" value="DELETE">
-  <button type="submit">Delete</button>
+  <button class="but" type="submit">Delete</button>
 </form>
-<a class="tag" href="/">Home</a>
