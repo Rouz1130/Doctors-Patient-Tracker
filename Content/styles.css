@@ -41,6 +41,21 @@ a:hover {
     font-style: italic;
 }
 
+.tag {
+  font-size: 40px;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.siz {
+  font-size: 20px;
+  font-style: italic;
+
+}
+
+.navbar {
+  background-color:#2e2e1f
+}
 
 h2 {
   font-size: 30px;

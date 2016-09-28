@@ -1,6 +1,7 @@
-<link rel="stylesheet" href="../Content/styles.css" >
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="Content/styles.css" >
 <h1>Doctor Patient Database</h1>
+<hr>
 <h2>Doctors:</h2>
 <br>
 <ul>
@@ -8,14 +9,17 @@
   {
     @foreach(var doctor in Model)
     {
-      <li><a href="/doctors/@doctor.GetId()">@doctor.GetName()</a> | <a href="/doctor/edit/@doctor.GetId()">Edit</a> | <a href="doctor/delete/@doctor.GetId()">Delete</a></li>
+      <li><a class="siz" href="/doctors/@doctor.GetId()">@doctor.GetName()</a> | <a class="siz" href="/doctor/edit/@doctor.GetId()">Edit</a> | <a class="siz" href="doctor/delete/@doctor.GetId()">Delete</a></li>
     }
   }
+  <br>
+  <br>
+  <br>
 </ul>
-<h4><a href="/doctors/new">Add Doctor</a></h4>
+<h4><a class="tag" href="/doctors/new">Add Doctor</a></h4>
 <br>
 <br>
-<h4><a href="/">Home</a></h4>
+<h4><a class="tag" href="/">Home</a></h4>
 <br>
 <br>
 

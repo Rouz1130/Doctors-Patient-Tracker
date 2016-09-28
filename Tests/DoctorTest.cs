@@ -84,16 +84,16 @@ namespace Appointment
         Assert.Equal(newName, result);
       }
 
-
+      [Fact]
       public void Tets7_GetPatient()
       {
         //Arrange
-        Doctor testDoctor = new Doctor("Joe", 1);
+        Doctor testDoctor = new Doctor("Joe");
         testDoctor.Save();
         Console.WriteLine(testDoctor.GetId());
-        Patient testPatient = new Patient("Mary", 127 );
+        Patient testPatient = new Patient("Mary", testDoctor.GetId() );
         testPatient.Save();
-        Patient patient2 = new Patient("Bob", 127 );
+        Patient patient2 = new Patient("Bob", testDoctor.GetId() );
         patient2.Save();
 
         List<Patient> testList = new List<Patient>{testPatient, patient2};
