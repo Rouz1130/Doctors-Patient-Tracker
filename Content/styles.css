@@ -31,8 +31,6 @@ h1 {
 }
 
 
-
-
 a:hover {
     color: black;
     text-decoration: underline;
@@ -48,8 +46,23 @@ a:hover {
 }
 
 .siz {
-  font-size: 20px;
-  font-style: italic;
+  font-size: 30px;
+  text-align: center;
+   width: 50%;
+   padding: 10px;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+
 
 }
 
@@ -79,19 +92,43 @@ h2 {
   color: #fff;
   border: 1px solid #eee;
   border-radius: 20px;
-  box-shadow: 5px 5px 5px #eee;
+  box-shadow: 5px 5px 5px #eee;;
+ left:20%;
+ right:20%;
+ bottom:5%;
+ top:60%;
+ font-size: 23px;
+ text-align:inherit;
+
+}
+
+.doc {
+  font-size: 45px;
+  text-align: left;
+  width: 50%;
+   padding: 10px;
 
 }
 
 .butt{
-  background: #016ABC;
+ background: #016ABC;
+ color: #fff;
+ border: 1px solid #eee;
+ border-radius: 20px;
+ box-shadow: 5px 5px 5px #eee;
+ font-size: 17px;
+}
 
-color: #fff;
+.sub {
+  font-size: 30px;
+  font-style: italic;
+  font-family: fantasy;
 
-border: 1px solid #eee;
-
-border-radius: 20px;
-
-box-shadow: 5px 5px 5px #eee;
-
+}
+#patient-name {
+  font-size: 12px;
+}
+.name {
+  font-size: 40px;
+  font-family: serif;
 }

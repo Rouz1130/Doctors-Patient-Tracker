@@ -1,8 +1,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="Content/styles.css" >
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <h1><a class="navbar-brand" href="#">Doctor Patient Database</a></h1> -->
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a class="active" href="/doctors">View Doctors</a></li>
+      <li><a class="active" href="/patients">View Patients</a></li>
+      <li><a class="active" href="/doctors/new">Add Doctor</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
+    </ul>
+  </div>
+</nav>
 <h1>Doctor Patient Database</h1>
 <hr>
-<h2>Doctors:</h2>
+<h2 class="doc">Doctors:</h2>
 <br>
 <ul>
   @if (Model.Count !=0)
@@ -16,13 +32,10 @@
   <br>
   <br>
 </ul>
-<h4><a class="tag" href="/doctors/new">Add Doctor</a></h4>
-<br>
-<br>
-<h4><a class="tag" href="/">Home</a></h4>
-<br>
+<!-- <h4><a class="tag" href="/doctors/new">Add Doctor</a></h4> -->
 <br>
 
+
 <form action="/doctors/clear" method="post">
-  <button class="but" type="submit">CLEAR</button>
+  <button class="but" type="submit">CLEAR LIST</button>
 </form>

@@ -1,10 +1,27 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="../Content/styles.css" >
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <h1><a class="navbar-brand" href="#">Doctor Patient Database</a></h1> -->
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a class="active"href="#">Home</a></li>
+      <li><a class="active" href="/doctors">View Doctors</a></li>
+      <li><a class="active" href="/patients/new">Add New Patients</a></li>
+      <li><a class="active" href="/patients">View Patients</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
+    </ul>
+  </div>
+</nav>
 <h1>Doctors</h1>
 <hr>
 <br>
 <form action="/doctors/new" method="post">
-  <label for="doctor-name">Doctor Name</label>
+  <label class"sub"for="doctor-name">Doctor Name</label>
   <input id="doctor-name" name="doctor-name" type="text">
   <button class="butt" type="submit">Add</button>
 </form>

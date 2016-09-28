@@ -1,6 +1,22 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="../Content/styles.css" >
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <h1><a class="navbar-brand" href="#">Doctor Patient Database</a></h1> -->
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a class="active" href="/">Home</a></li>
+      <li><a class="active" href="/doctors">View Doctors</a></li>
+      <li><a class="active" href="/patients/new">Add New Patients</a></li>
+      <li><a class="active" href="/patients">View Patients</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
+    </ul>
+  </div>
+</nav>
 <h1>Doctor Patient List</h1>
 <hr>
 <h2>Edit Doctor: @Model.GetName()</h2>
@@ -9,6 +25,5 @@
   <input name="doctor-id" type="hidden" value="@Model.GetId()">
   <label for="doctor-name">Doctor Name</label>
   <input id="doctor-name" name="doctor-name" type="text">
-  <button type="submit">Submit</button>
+  <button class="butt" type="submit">Submit</button>
 </form>
-<h4><a class="tag" href="/">Home</a></h4>

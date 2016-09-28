@@ -1,11 +1,26 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="../Content/styles.css" >
 
-
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <h1><a class="navbar-brand" href="#">Doctor Patient Database</a></h1> -->
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a class="active" href="/">Home</a></li>
+      <li><a class="active" href="/doctors">View Doctors</a></li>
+      <li><a class="active" href="/patients">View Patients</a></li>
+      <li><a class="active" href="/patients/new">Add New Patients</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
+    </ul>
+  </div>
+</nav>
 <h1>Add Patient</h1>
 <hr>
 <form action="/patients/new" method="post">
-  <label for="patient-name">Name</label>
+  <label class="name" for="patient-name">Name:</label>
   <input id="patient-name" name="patient-name" type="text">
   <select name="doctor-id">
     @foreach (var doctor in Model)
@@ -15,8 +30,3 @@
   </select>
   <button class="butt" type="submit">Add</button>
 </form>
-<br>
-<a href="/">Home</a>
-<br>
-<br>
-<a class="tag" href="/patients">Patients</a>
